@@ -33,10 +33,10 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false, // false in local
+    secure: true, // false in local
     httpOnly: true, // Prevent XSS attacks
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
-    sameSite: 'lax'  // 'lax' for local and 'none' for production
+    sameSite: 'none'  // 'lax' for local and 'none' for production
   },
   name: 'sessionId' // Custom session name
 }));
