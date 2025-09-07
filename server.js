@@ -16,7 +16,7 @@ const PORT = 7000;
 
 // CORS configuration - allows frontend to communicate with backend
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'https://klickks-auth-webapp.netlify.app'], // Common React dev ports
+  origin: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'https://klickks-auth-webapp.netlify.app', 'https://klickks-auth-webapp.netlify.app/', 'https://klickks-frontend.onrender.com', 'https://klickks-frontend.onrender.com/'], // Common React dev ports
   credentials: true, // Allow cookies to be sent
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -33,10 +33,10 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true, // false in local
+    secure: false, // false in local
     httpOnly: true, // Prevent XSS attacks
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
-    sameSite: 'none'  // 'lax' for local
+    sameSite: 'lax'  // 'lax' for local and 'none' for production
   },
   name: 'sessionId' // Custom session name
 }));
