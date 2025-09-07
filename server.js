@@ -16,8 +16,7 @@ const PORT = 7000;
 
 // CORS configuration - allows frontend to communicate with backend
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'https://klickks-auth-webapp.netlify.app', 'https://klickks-auth-webapp.netlify.app/', 'https://klickks-frontend.onrender.com', 'https://klickks-frontend.onrender.com/'], // Common React dev ports
-  credentials: true, // Allow cookies to be sent
+  origin:'https://klickks-frontend.onrender.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
