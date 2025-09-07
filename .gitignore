@@ -1,3 +1,5 @@
 .env
 users.db
 /node_modules
+.gitignore
+package-locak.json

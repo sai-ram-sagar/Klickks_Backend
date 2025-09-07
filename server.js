@@ -12,11 +12,11 @@ const authRoutes = require('./routes/auth');
 const db = require('./db');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = 7000;
 
 // CORS configuration - allows frontend to communicate with backend
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174'], // Common React dev ports
+  origin: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'https://klickks-auth-webapp.netlify.app'], // Common React dev ports
   credentials: true, // Allow cookies to be sent
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -29,14 +29,14 @@ app.use(cookieParser()); // Parse cookies
 
 // Session configuration
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'your-super-secret-key-change-this-in-production',
+  secret: '6e54232f-911c-45ec-9250-0d901e5e58c3', //any secret string
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+    secure: true, // false in local
     httpOnly: true, // Prevent XSS attacks
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+    sameSite: 'none'  // 'lax' for local
   },
   name: 'sessionId' // Custom session name
 }));
